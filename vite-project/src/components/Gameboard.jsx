@@ -12,6 +12,18 @@ function Gameboard({colors}) {
 
     const [matchedCards, setMatchedCards] = useState([]);
 
+          useEffect(() => {
+  console.log("Updated flippedCard1:", flippedCard1);
+}, [flippedCard1]);
+          useEffect(() => {
+  console.log("Updated flippedCard2:", flippedCard2);
+}, [flippedCard2]);
+          useEffect(() => {
+  console.log("Updated flippedCardId1:", flippedCardId1);
+}, [flippedCardId1]);
+          useEffect(() => {
+  console.log("Updated flippedCard2Id2:", flippedCardId2);
+}, [flippedCardId2]);
 
 function randomizeColors() {
   const shuffled = [...colors].sort(() => Math.random() - 0.5);
@@ -22,24 +34,30 @@ function randomizeColors() {
     if (!flippedCard1) {
       setFlippedCard1(color);
       setFlippedCardId1(idnumber);
-      console.log(flippedCard1)
-      console.log(flippedCardId1)
-    } else if (!flippedCard2) {
+
+
+    } else {
       setFlippedCard2(color);
       setFlippedCardId2(idnumber);
 
-      checkIfMatch();
+
+      
     } 
   }
-
+  useEffect(() => {
   function checkIfMatch () {
     if (flippedCard1 === flippedCard2) {
       setCardsFound(cardsFound + 2);
-      setMatchedCards([...matchedCards, flippedCard1]); 
+      setMatchedCards([...matchedCards, flippedCard1]);
+      console.log("Matched cards" + matchedCards) ;
     }
     setFlippedCard1(null);
     setFlippedCard2(null);
   }
+  if (flippedCard2) {
+    checkIfMatch();
+
+} }, [flippedCard2] )
 
 return (
   <div id="game-board">
