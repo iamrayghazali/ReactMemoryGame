@@ -64,7 +64,7 @@ return (
     <StartButton onClick={randomizeColors} />
 
       {colors.map((color, i) => (
-        <Card key={i} idnumber={i} className={`card`} i color={color} onClick={() => flipCard(color, i)} isFlipped={(flippedCard1 === color && flippedCardId1 === i) || flippedCard2 === color} isMatched={matchedCards.includes(color)}/>
+        <Card key={i} idnumber={i} className={`card`} i color={color} onClick={() => flipCard(color, i)} isFlipped={(flippedCard1 === color && flippedCardId1 === i) || flippedCard2 === color && flippedCardId2 === i} isMatched={matchedCards.includes(color)}/>
       ))}
       
   </div>
