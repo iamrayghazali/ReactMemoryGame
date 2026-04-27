@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function Card({ color, onClick, isFlipped, isMatched }) {
+function Card({ color, idnumber, onClick, isFlipped, isMatched }) {
   return (
-    <div onClick={() => onClick()} className={`card ${color} ${isFlipped1 || isMatched ? '' : 'hidden'}`} >
+    <div onClick={() => onClick()} className={`card ${color} ${idnumber} ${isFlipped || isMatched ? '' : 'hidden'} `} >
 
     </div>
   );
