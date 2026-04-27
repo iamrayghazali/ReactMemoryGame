@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import StartButton from "./components/StartButton";
 import Card from "./components/Card";
+import Gameboard from "./components/Gameboard";
 
 function App() {
   const [colors, setColors] = useState([
@@ -20,16 +21,9 @@ function App() {
     "cyan",
   ]);
 
-  function randomizeColors() {
-    colors.sort(() => Math.random() - 0.5);
-  }
-
   return (
     <>
-      <StartButton onClick={randomizeColors} />
-      {colors.map((color) => (
-        <Card />
-      ))}
+      <Gameboard colors={colors} />
     </>
   );
 }
