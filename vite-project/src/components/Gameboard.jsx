@@ -28,7 +28,6 @@ function Gameboard({ colors, randomizeColors }) {
 		if (matchedCards.length === 6) {
 			alert("Grat");
 		}
-		console.log(matchedCards.length);
 	}, [matchedCards]);
 
 	function flipCard(color, idnumber) {
