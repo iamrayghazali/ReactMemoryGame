@@ -28,6 +28,7 @@ function App() {
 
   return (
     <>
+      <StartButton randomizeColors={randomizeColors} />
       <Gameboard colors={colors} randomizeColors={randomizeColors} />
     </>
   );
