@@ -8,6 +8,7 @@ function Gameboard({ colors, randomizeColors }) {
   const [flippedCard2, setFlippedCard2] = useState(null);
   const [flippedCardId1, setFlippedCardId1] = useState(null);
   const [flippedCardId2, setFlippedCardId2] = useState(null);
+  const [isLocked, setIsLocked] = useState(false);
 
   const [matchedCards, setMatchedCards] = useState([]);
 
@@ -30,6 +31,7 @@ function Gameboard({ colors, randomizeColors }) {
   }, [matchedCards]);
 
   function flipCard(color, idnumber) {
+	if (isLocked) return;
     if (!flippedCard1) {
       setFlippedCard1(color);
       setFlippedCardId1(idnumber);
@@ -40,13 +42,18 @@ function Gameboard({ colors, randomizeColors }) {
   }
   useEffect(() => {
     function checkIfMatch() {
+		
       if (flippedCard1 === flippedCard2) {
         setMatchedCards([...matchedCards, flippedCard1]);
       }
+	  setIsLocked(true);
       setTimeout(() => {
         setFlippedCard1(null);
         setFlippedCard2(null);
-      }, 500);
+		setFlippedCardId1(null);
+		setFlippedCardId2(null);
+		setIsLocked(false);
+      }, 400);
     }
     if (flippedCard2) {
       checkIfMatch();
