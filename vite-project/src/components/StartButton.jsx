@@ -1,7 +1,10 @@
-function StartButton({ randomizeColors }) {
+function StartButton({ randomizeColors, callback }) {
   return (
     <div className="startButton">
-      <button onClick={randomizeColors}>Start Game</button>
+      <button onClick={() => {
+		randomizeColors;
+		callback(true);
+	  }}>Start Game</button>
     </div>
   );
 }

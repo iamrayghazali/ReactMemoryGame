@@ -6,7 +6,8 @@ import Card from "./components/Card";
 import Gameboard from "./components/Gameboard";
 
 function App() {
-  const [colors, setColors] = useState([
+	const [isStarted, setIsStarted] = useState(false);
+	  const [colors, setColors] = useState([
     "blue",
     "green",
     "red",
@@ -28,8 +29,11 @@ function App() {
 
   return (
     <>
-      <StartButton randomizeColors={randomizeColors} />
-      <Gameboard colors={colors} randomizeColors={randomizeColors} />
+      <StartButton randomizeColors={randomizeColors} callback={setIsStarted}/>
+
+			{isStarted ? (
+				<Gameboard colors={colors} randomizeColors={randomizeColors} />
+			) : null }
     </>
   );
 }
