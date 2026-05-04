@@ -4,73 +4,74 @@ import Card from "./Card";
 import { useEffect } from "react";
 
 function Gameboard({ colors, randomizeColors }) {
-	const [cardsFound, setCardsFound] = useState(0);
-	const [flippedCard1, setFlippedCard1] = useState(null);
-	const [flippedCard2, setFlippedCard2] = useState(null);
-	const [flippedCardId1, setFlippedCardId1] = useState(null);
-	const [flippedCardId2, setFlippedCardId2] = useState(null);
+  const [flippedCard1, setFlippedCard1] = useState(null);
+  const [flippedCard2, setFlippedCard2] = useState(null);
+  const [flippedCardId1, setFlippedCardId1] = useState(null);
+  const [flippedCardId2, setFlippedCardId2] = useState(null);
 
-	const [matchedCards, setMatchedCards] = useState([]);
+  const [matchedCards, setMatchedCards] = useState([]);
 
-	useEffect(
-		() =>
-			function resetBoard() {
-				setFlippedCard1(null);
-				setFlippedCard2(null);
-				setMatchedCards([]);
-				setFlippedCardId1(null);
-				setFlippedCardId2(null);
-			},
-		[colors],
-	);
+  useEffect(
+    () =>
+      function resetBoard() {
+        setFlippedCard1(null);
+        setFlippedCard2(null);
+        setFlippedCardId1(null);
+        setFlippedCardId2(null);
+		setMatchedCards([]);
+      },
+    [colors],
+  );
 
-	useEffect(() => {
-		if (matchedCards.length === 6) {
-			alert("Grat");
-		}
-	}, [matchedCards]);
+  useEffect(() => {
+    if (matchedCards.length === colors.length / 2) {
+      alert("Congratulations! You are amazing!");
+    }
+  }, [matchedCards]);
 
-	function flipCard(color, idnumber) {
-		if (!flippedCard1) {
-			setFlippedCard1(color);
-			setFlippedCardId1(idnumber);
-		} else {
-			setFlippedCard2(color);
-			setFlippedCardId2(idnumber);
-		}
-	}
-	useEffect(() => {
-		function checkIfMatch() {
-			if (flippedCard1 === flippedCard2) {
-				setCardsFound(cardsFound + 2);
-				setMatchedCards([...matchedCards, flippedCard1]);
-			}
-			setTimeout(() => {
-				setFlippedCard1(null);
-				setFlippedCard2(null);
-			}, 500);
-		}
-		if (flippedCard2) {
-			checkIfMatch();
-		}
-	}, [flippedCard2]);
+  function flipCard(color, idnumber) {
+    if (!flippedCard1) {
+      setFlippedCard1(color);
+      setFlippedCardId1(idnumber);
+    } else {
+      setFlippedCard2(color);
+      setFlippedCardId2(idnumber);
+    }
+  }
+  useEffect(() => {
+    function checkIfMatch() {
+      if (flippedCard1 === flippedCard2) {
+        setMatchedCards([...matchedCards, flippedCard1]);
+      }
+      setTimeout(() => {
+        setFlippedCard1(null);
+        setFlippedCard2(null);
+      }, 500);
+    }
+    if (flippedCard2) {
+      checkIfMatch();
+    }
+  }, [flippedCard2]);
 
-	return (
-		<div id="game-board">
-			{colors.map((color, i) => (
-				<Card
-					key={i}
-					idnumber={i}
-					className={`card`}
-					i
-					color={color}
-					onClick={() => flipCard(color, i)}
-					isFlipped={(flippedCard1 === color && flippedCardId1 === i) || (flippedCard2 === color && flippedCardId2 === i)}
-					isMatched={matchedCards.includes(color)}
-				/>
-			))}
-		</div>
-	);
+  return (
+    <div id="game-board">
+      {colors.map((color, i) => (
+        <Card
+          key={i}
+          idnumber={i}
+          className={`card`}
+          i
+          color={color}
+          onClick={() => flipCard(color, i)}
+          isFlipped={
+            (flippedCard1 === color && flippedCardId1 === i) ||
+            (flippedCard2 === color && flippedCardId2 === i)
+          }
+          isMatched={matchedCards.includes(color)}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default Gameboard;
