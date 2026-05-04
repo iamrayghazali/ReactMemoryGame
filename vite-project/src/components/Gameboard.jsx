@@ -25,6 +25,16 @@ function Gameboard({colors, randomizeColors}) {
   console.log("Updated flippedCard2Id2:", flippedCardId2);
 }, [flippedCardId2]);
 
+  useEffect(() =>
+    function resetBoard () {
+      setFlippedCard1(null);
+      setFlippedCard2(null);
+      setMatchedCards([]);
+      setFlippedCardId1(null);
+      setFlippedCardId2(null);
+    }
+  ,[colors])
+
 
   function flipCard (color, idnumber) {
     if (!flippedCard1) {
@@ -51,6 +61,8 @@ function Gameboard({colors, randomizeColors}) {
     setFlippedCard1(null);
     setFlippedCard2(null);
   }, 500)
+
+
     
   }
   if (flippedCard2) {
