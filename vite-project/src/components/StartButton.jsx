@@ -7,7 +7,7 @@ function StartButton({ randomizeColors, callback, isStarted }) {
           callback(true);
         }}
       >
-        {isStarted ? ("Reset"):("Start Game")}
+        {isStarted ? ("Reset Game"):("Start Game")}
       </button>
     </div>
   );
