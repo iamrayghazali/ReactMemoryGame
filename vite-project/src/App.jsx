@@ -29,7 +29,7 @@ function App() {
 
   return (
     <>
-      <StartButton randomizeColors={randomizeColors} callback={setIsStarted} />
+      <StartButton randomizeColors={randomizeColors} callback={setIsStarted} isStarted={isStarted}/>
 
       {isStarted ? (
         <Gameboard colors={colors} randomizeColors={randomizeColors} />

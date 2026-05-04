@@ -1,4 +1,4 @@
-function StartButton({ randomizeColors, callback }) {
+function StartButton({ randomizeColors, callback, isStarted }) {
   return (
     <div className="startButton">
       <button
@@ -7,7 +7,7 @@ function StartButton({ randomizeColors, callback }) {
           callback(true);
         }}
       >
-        Start New Game
+        {isStarted ? ("Reset"):("Start Game")}
       </button>
     </div>
   );
