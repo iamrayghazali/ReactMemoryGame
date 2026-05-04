@@ -21,9 +21,14 @@ function App() {
     "cyan",
   ]);
 
+    function randomizeColors() {
+    const shuffled = [...colors].sort(() => Math.random() - 0.5);
+    setColors(shuffled);
+  }
+
   return (
     <>
-      <Gameboard colors={colors} />
+      <Gameboard colors={colors} randomizeColors={randomizeColors} />
     </>
   );
 }

@@ -3,7 +3,7 @@ import StartButton from './StartButton';
 import Card from './Card';
 import { useEffect } from 'react';
 
-function Gameboard({colors}) {
+function Gameboard({colors, randomizeColors}) {
   const [cardsFound, setCardsFound] = useState(0);
   const [flippedCard1, setFlippedCard1] = useState(null);
   const [flippedCard2, setFlippedCard2] = useState(null);
@@ -25,10 +25,6 @@ function Gameboard({colors}) {
   console.log("Updated flippedCard2Id2:", flippedCardId2);
 }, [flippedCardId2]);
 
-function randomizeColors() {
-  const shuffled = [...colors].sort(() => Math.random() - 0.5);
-  setColors(shuffled); 
-}
 
   function flipCard (color, idnumber) {
     if (!flippedCard1) {
@@ -51,8 +47,11 @@ function randomizeColors() {
       setMatchedCards([...matchedCards, flippedCard1]);
       console.log("Matched cards" + matchedCards) ;
     }
+    setTimeout(()=>{
     setFlippedCard1(null);
     setFlippedCard2(null);
+  }, 500)
+    
   }
   if (flippedCard2) {
     checkIfMatch();
@@ -61,7 +60,7 @@ function randomizeColors() {
 
 return (
   <div id="game-board">
-    <StartButton onClick={randomizeColors} />
+    <StartButton randomizeColors={randomizeColors} />
 
       {colors.map((color, i) => (
         <Card key={i} idnumber={i} className={`card`} i color={color} onClick={() => flipCard(color, i)} isFlipped={(flippedCard1 === color && flippedCardId1 === i) || flippedCard2 === color && flippedCardId2 === i} isMatched={matchedCards.includes(color)}/>
