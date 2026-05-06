@@ -1,21 +1,58 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: beige;
-  color: black;
+  font-family: "Lato",;
+  background-color: black;
+  color: beige;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+
 button {
   cursor: pointer;
-  height: 40px;
-  width: 120px;
-  background-color: black;
-  color: beige;
+  height: 60px;
+  width: 260px;
+  background-color: white;
+  color: black;
   border-radius: 10px;
+  font-size: 2rem;
+  font-family: "Lato";
+  font-weight: 600;
+  padding-bottom: 5px;
+  border: 1px solid black;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid gray;
+}
+
+#rules {
+  font-weight: 700;
+  margin-left: 15rem;
+  color: white;
+  font-family: "Lato";
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+
+#title {
+  font-weight: 400;
+  color: gray;
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -23,8 +60,16 @@ h1 {
   margin-top: 10px;
 }
 
+p {
+  color: white;
+
+}
+
 #game-board {
-  margin: 20px;
+  border-radius: 12px;
+  border: 2px solid gray;
+  padding: 5px;
+  margin: 20px 20px 20px 50px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 5px;
@@ -41,7 +86,7 @@ h1 {
 
 .hidden {
   cursor: pointer;
-  background-color: black !important;
+  background-color: white !important;
 }
 
 .yellow {

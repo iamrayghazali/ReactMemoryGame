@@ -33,7 +33,18 @@ function App() {
 
       {isStarted ? (
         <Gameboard colors={colors} randomizeColors={randomizeColors} />
-      ) : null}
+      ) : (
+				
+			<div id="rules">
+				<ul>
+					<span id="title">About the game</span>
+					<li>Flip two cards each turn</li>
+					<li>Non-matching cards flip back over</li>
+					<li>Match all pairs to win</li>
+				</ul>
+			</div>
+
+			)}
     </>
   );
 }
