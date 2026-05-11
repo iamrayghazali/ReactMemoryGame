@@ -32,6 +32,7 @@ function Gameboard({ colors, randomizeColors }) {
 
   function flipCard(color, idnumber) {
 	if (isLocked) return;
+  if (idnumber === flippedCardId1) return;
     if (!flippedCard1) {
       setFlippedCard1(color);
       setFlippedCardId1(idnumber);
