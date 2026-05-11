@@ -51,9 +51,9 @@ function Gameboard({ colors, randomizeColors }) {
       setTimeout(() => {
         setFlippedCard1(null);
         setFlippedCard2(null);
-		setFlippedCardId1(null);
-		setFlippedCardId2(null);
-		setIsLocked(false);
+		    setFlippedCardId1(null);
+		    setFlippedCardId2(null);
+		    setIsLocked(false);
       }, 400);
     }
     if (flippedCard2) {
